@@ -35,7 +35,7 @@ bipedarm2.addBox(-2.0, 2.0, 1.5, 5, 10, 5, 0);
 var RobotRenderer = Renderer.createHumanoidRenderer();
 addRobotToRenderer(RobotRenderer);
 
-function useItem(x, y, z, itemId, blockId, side);
+function useItem(x, y, z, itemId, blockId, side)
 {
 if(blockId==397)
 {
@@ -51,5 +51,5 @@ var cmd = c.split(" ");
 if(cmd[0]=="Robot" && cmd[1]=="spawner")
 Player.addItemInventory(397,1);
 clientMessage("You were given a Robot spawn egg!");
-	}
+
 }
