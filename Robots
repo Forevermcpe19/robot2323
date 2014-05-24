@@ -1,0 +1,55 @@
+/*
+Mod by Forevermcpe19
+Licensed on Apache License 2.0
+*/
+
+ModPE.setItem(397, "spawn_egg", 0, "Spawn Robot");
+var Robot;
+
+function addRobotToRenderer(renderer)	{
+var model = renderer.getModel();
+var bipedBody = model.getPart("body").clear();
+bipedBody.setTextureOffset(7, 4);
+bipedBody.addBox(15, -15, -13, 10, 15, 0);
+var bipedLeg = model.getPart("rightLeg").clear();
+bipedLeg.setRotationPoint(-2.0, 2.0, 1.5);
+bipedLeg.setTextureOffset(7, 4);
+bipedLeg.addBox(-2.0, 2.0, 1.5, 5, 10, 5, 0);
+var bipedLeg2 = model.getPart("leftLeg").clear();
+bipedLeg2.setRotationPoint(2.0, -2.0, 1.5);
+bipedLeg2.setTextureOffset(7, 4);
+bipedLeg2.addBox(-2.0, 2.0, 1.5, 5, 10, 5, 0);
+var bipedhead = model.getPart("head").clear();
+bipedhead.setTextureOffset(7, 4);
+bipedhead.addBox(5, -6, -5, 5, 7, 0);
+var bipedarm = model.getPart("rightArm").clear();
+bipedarm.setRotationPoint(2.0, -2.0, 1.5);
+bipedarm.setTextureOffset(7, 4);
+bipedarm.addBox(-2.0, 2.0, 1.5, 5, 10, 5, 0);
+var bipedarm2 = model.getPart("leftArm").clear();
+bipedarm2.setRotationPoint(-2.0, 2.0, 1.5);
+bipedarm2.setTextureOffset(7, 4);
+bipedarm2.addBox(-2.0, 2.0, 1.5, 5, 10, 5, 0);
+}
+
+var RobotRenderer = Renderer.createHumanoidRenderer();
+addRobotToRenderer(RobotRenderer);
+
+function useItem(x, y, z, itemId, blockId, side);
+{
+if(blockId==397)
+{
+Robot = Level.spawnMob(x, y+1, z,13,"mob/skin.png");
+Entity.setRenderType(Robot, Robot.renderType);
+Entity.setNameTag(Robot, "Robot");
+Entity.setHealth(Robot, 100);
+}
+}
+
+function procCmd(c){
+var cmd = c.split(" ");
+if(cmd[0]=="Robot" && cmd[1]=="spawner")
+Player.addItemInventory(397,1);
+clientMessage("You were given a Robot spawn egg!");
+	}
+}
